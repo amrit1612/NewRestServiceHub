@@ -35,4 +35,9 @@ public class OrderController {
     return new ResponseEntity<>(orderResponse,HttpStatus.OK);
     }
 
+   @ExceptionHandler(Exception.class)
+   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleGeneralException(Exception ex) {
+    return new ResponseEntity<>("An error occurred: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 }
