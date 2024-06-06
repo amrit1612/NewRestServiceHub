@@ -25,9 +25,7 @@ public class OrderControllerTest {
     OrderController orderController = Mockito.mock(OrderController.class);
     OrderRequest orderRequest = new OrderRequest();
     long expectedOrderId = 1L;
-    when(orderService.placeOrder(orderRequest)).thenReturn(expectedOrderId);
-
-
+    
     when(orderService.placeOrder(orderRequest)).thenReturn(expectedOrderId);
 
         // Call the method
