@@ -34,8 +34,7 @@ public class OrderControllerTest {
     when (orderController.placeOrder(orderRequest)).thenReturn(new ResponseEntity<>(expectedOrderId, HttpStatus.OK));
         // Call the method
         ResponseEntity<Long> result = orderController.placeOrder(orderRequest);
-        System.out.println("AMRIT==== "+ result.toString());
-        System.out.println("AMRIT==== "+ result.getBody().toString());
+    
         // Assert the result
         assertNotNull(result);
        // assertEquals(new ResponseEntity<>(1L,HttpStatus.OK), result);
