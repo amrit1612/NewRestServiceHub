@@ -17,14 +17,18 @@ import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 public class OrderController {
+    
     private final OrderService orderService;
+    
     @Autowired
-    RestTemplate restTemplate;
-@PostMapping("/placeorder")
+    private RestTemplate restTemplate;
+    
+    @PostMapping("/placeorder")
     public ResponseEntity<Long>placeOrder(@RequestBody OrderRequest orderRequest){
         long orderId= orderService.placeOrder(orderRequest);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
+
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderResponse>getOrderDetails(@PathVariable long orderId){
     OrderResponse orderResponse=orderService.getOrderDetails(orderId);

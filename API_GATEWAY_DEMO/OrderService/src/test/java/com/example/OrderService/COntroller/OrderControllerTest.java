@@ -37,8 +37,9 @@ public class OrderControllerTest {
     
         // Assert the result
         assertNotNull(result);
-       // assertEquals(new ResponseEntity<>(1L,HttpStatus.OK), result);
-      
+       
+       assertEquals(HttpStatus.OK, result.getStatusCode());
+       assertEquals(expectedOrderId, result.getBody().longValue());
     }
    }
 
