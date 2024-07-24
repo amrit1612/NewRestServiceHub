@@ -37,5 +37,55 @@ public class PaymentController {
         return paymentService.getAll();
 
     }
+    // Method to load the payment details by orderId
+    @GetMapping("/load/{orderId}")
+    public ResponseEntity<PaymentResponse>loadPaymentDetailsByOrderId(@PathVariable long orderId){
+        return new ResponseEntity<>(
+                paymentService.loadPaymentDetailsByOrderId(orderId),HttpStatus.OK
+        );
+    }
 
+    // Method to update the payment details by orderId
+    @PutMapping("/update/{orderId}")
+    public ResponseEntity<PaymentResponse>updatePaymentDetailsByOrderId(@PathVariable long orderId,@RequestBody PaymentRequest paymentRequest){
+        return new ResponseEntity<>(
+                paymentService.updatePaymentDetailsByOrderId(orderId,paymentRequest),HttpStatus.OK
+        );
+    }
+// Method to delete the payment details by orderId
+    @DeleteMapping("/delete/{orderId}")
+    public ResponseEntity<String>deletePaymentDetailsByOrderId(@PathVariable long orderId){
+        return new ResponseEntity<>(
+                paymentService.deletePaymentDetailsByOrderId(orderId),HttpStatus.OK
+        );
+    }    
+
+// Method to delete all the payment details
+    @DeleteMapping("/delete/all")
+    public ResponseEntity<String>deleteAllPaymentDetails(){
+        return new ResponseEntity<>(
+                paymentService.deleteAllPaymentDetails(),HttpStatus.OK
+        );
+    }
+    //Telemetry API
+    @GetMapping("/telemetry")
+    public ResponseEntity<String>telemetry(){
+        return new ResponseEntity<>(
+                paymentService.telemetry(),HttpStatus.OK
+        );
+    }
+    //Health API
+    @GetMapping("/health")
+    public ResponseEntity<String>health(){
+        return new ResponseEntity<>(
+                paymentService.health(),HttpStatus.OK
+        );
+    }
+    //Info API
+    @GetMapping("/info")
+    public ResponseEntity<String>info(){
+        return new ResponseEntity<>(
+                paymentService.info(),HttpStatus.OK
+        );
+    }
 }
